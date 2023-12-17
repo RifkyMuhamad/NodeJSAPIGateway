@@ -1,0 +1,24 @@
+{
+  "name": "api-gateway-dystr",
+  "version": "1.0.0",
+  "description": "RESTful API for Personal Project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RifkyMuhamad/NodeJSAPIGateway.git"
+  },
+  "keywords": [
+    "DyoneStrankers"
+  ],
+  "author": "DyoneStrankers, Rifky Muhamad",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "winston": "^3.11.0"
+  }
+}
