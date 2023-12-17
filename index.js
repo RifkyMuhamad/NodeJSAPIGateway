@@ -14,8 +14,10 @@ const app = express();
 // create logger
 const logger = winston.createLogger({});
 
+const iseng = "Hello, follow ig ku ntar ku follback kok :3 https://www.instagram.com/dyonestrankers/";
+
 app.get("/", (req, res) => {
-  res.send("Hello, Express!");
+  res.send(iseng);
 });
 
 app.listen(
