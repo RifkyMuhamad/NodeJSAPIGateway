@@ -15,4 +15,4 @@ const pool = new Pool({
   connectionString: postgres + "?sslmode=require",
 });
 
-export { pool };
+export { pool, postgres };
