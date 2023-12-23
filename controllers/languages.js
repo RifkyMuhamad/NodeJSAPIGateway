@@ -3,7 +3,12 @@ const languagesList = async (req, res) => {
         id: {
             languages: "Bahasa Indonesia",
             country: "Indonesia",
-            code: "ID"
+            countryCodeAlpha2: "ID",
+            countryCodeAlpha3: "IDN",
+            languagesCode2: "id",
+            languagesCode3: "ind",
+            currency: "Rupiah",
+            capitalCity: "Jakarta"
         }
     });
 };
