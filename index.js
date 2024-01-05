@@ -9,6 +9,8 @@ dotenv.config();
 const port = process.env.PORT;
 const portOrigin = process.env.PORTORIGIN;
 
+console.log(portOrigin);
+
 const app = express();
 
 const middlewares = [
