@@ -7,7 +7,7 @@ import router from "./routes/routes.js";
 dotenv.config();
 
 const port = process.env.PORT;
-export const portOrigin = process.env.PORTORIGIN;
+const portOrigin = process.env.PORTORIGIN;
 
 const app = express();
 
