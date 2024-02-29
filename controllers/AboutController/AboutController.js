@@ -1,10 +1,10 @@
-const about = async (req, res) => {
+const aboutController = async (req, res) => {
   res.json({
     message: "DyoneStrankers in About baru",
   });
 };
 
-const aboutId = async (req, res) => {
+const aboutIdController = async (req, res) => {
   const id = req.params.id;
   res.json({
     message: "DyoneStrankers in About",
@@ -12,4 +12,4 @@ const aboutId = async (req, res) => {
   });
 };
 
-export { about, aboutId };
+export { aboutController, aboutIdController };

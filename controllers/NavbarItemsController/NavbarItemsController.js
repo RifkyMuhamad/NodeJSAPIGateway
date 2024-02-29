@@ -1,4 +1,4 @@
-const navbarItems = async (req, res) => {
+const navbarItemsController = async (req, res) => {
   res.json({
     logo: "DyoneStrankers",
     navItems: [
@@ -14,4 +14,4 @@ const navbarItems = async (req, res) => {
   });
 };
 
-export { navbarItems };
+export { navbarItemsController };

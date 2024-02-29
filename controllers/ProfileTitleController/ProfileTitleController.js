@@ -1,4 +1,4 @@
-const profileTitle = async (req, res) => {
+const profileTitleController = async (req, res) => {
   res.json({
     id: [
       "Vite + React",
@@ -14,4 +14,4 @@ const profileTitle = async (req, res) => {
   });
 };
 
-export { profileTitle };
+export { profileTitleController };

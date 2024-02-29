@@ -2,35 +2,44 @@ import express from "express";
 import dotenv from "dotenv";
 import { logger } from "./log/log.js";
 import router from "./routes/routes.js";
+import { connectMongo } from "./database/DBConnect.js";
 
+/** Mengatur server akan mengakses variable environment*/
 dotenv.config();
 
+/**
+ * Port for running application
+ *
+ * @type { Number }
+ */
 const port = process.env.PORT;
 
+/**
+ * Express App
+ *
+ * @type { Express }
+ */
 const app = express();
 
-/**
- * CORS FOR DEVELOPMENT
- */
-// import cors from "cors";
 
-// const portOrigin = process.env.PORTORIGIN;
+//////////////////////////////////////////////////////////////////////////////////
+// add cors code for development from test.txt
+//////////////////////////////////////////////////////////////////////////////////
 
-// const middlewares = [
-//   cors({ credentials: true, origin: portOrigin }),
-//   express.json(),
-// ];
+/** Mengatur req body harus json */
+app.use(express.json());
 
-// for (const middleware of middlewares) {
-//   app.use(middleware);
-// }
-/**
- * END OF CORS
- */
-
-
+/** Menambah object Router*/
 app.use(router);
 
+/** Mengatur direktori public bisa diakses public*/
+app.use(express.static('public'));
+
+/** Database Connection */
+connectMongo(databaseConfig.db);
+
+
+/** Running Application */
 app.listen(
   port,
   logger.log({

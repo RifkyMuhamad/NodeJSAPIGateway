@@ -1,5 +1,7 @@
-#env
+# private file
 .env
+DontPush/test.txt
+DontPush
 
 #dependecies
 /node_modules
@@ -10,3 +12,6 @@
 
 #misc
 .package-lock.json
+
+IDE
+.idea

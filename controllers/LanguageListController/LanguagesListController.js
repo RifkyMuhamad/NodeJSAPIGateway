@@ -1,4 +1,10 @@
-const languagesList = async (req, res) => {
+/**
+ *
+ * @param req
+ * @param res
+ * @return {Promise<void>}
+ */
+const languagesListController = async (req, res) => {
     res.json({
         id: {
             languages: "Bahasa Indonesia",
@@ -13,4 +19,4 @@ const languagesList = async (req, res) => {
     });
 };
 
-export { languagesList };
+export { languagesListController };

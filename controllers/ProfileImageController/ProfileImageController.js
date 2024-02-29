@@ -1,6 +1,6 @@
 import fs from "fs";
 
-export const ProfileImage = async (req, res) => {
+export const profileImageController = async (req, res) => {
     try {
         // Baca file gambar secara asinkron
         const imageBuffer = await fs.promises.readFile(
