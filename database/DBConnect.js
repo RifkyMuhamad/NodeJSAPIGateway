@@ -13,6 +13,5 @@ export async function connectMongo(mongoUri) {
             level: "error",
             message: err.message,
         })
-        process.exit(1);
     }
 }

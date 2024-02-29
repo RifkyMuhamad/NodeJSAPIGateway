@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { logger } from "./log/log.js";
 import router from "./routes/routes.js";
 import { connectMongo } from "./database/DBConnect.js";
+import { databaseConfig } from "./config/DatabaseConfig.js";
 
 /** Mengatur server akan mengakses variable environment*/
 dotenv.config();
