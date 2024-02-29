@@ -12,17 +12,17 @@ import vocabService from "../../services/VocabService.js";
 async function get(req, res) {
 
     // mengecek apakah terdapat query parameter atau tidak
-    if (req.query.justThisLang !== "") {
+    if (req.query.justThisLang && req.query.justThisLang !== "") {
         req.query.justThisLang.split(',').forEach(item => justThisLang.push(item.trim()));
     }
 
     // mengecek apakah terdapat query parameter atau tidak
-    if (req.query.exceptVocab !== "") {
+    if (req.query.exceptVocab && req.query.exceptVocab !== "") {
         req.query.exceptVocab.split(',').forEach(item => exceptVocab.push(item.trim()));
     }
 
     // mengecek apakah terdapat query parameter atau tidak
-    if (req.query.exceptLang !== "") {
+    if (req.query.exceptLang && req.query.exceptLang !== "") {
         req.query.exceptLang.split(',').forEach(item => exceptLang.push(item.trim()));
     }
 
