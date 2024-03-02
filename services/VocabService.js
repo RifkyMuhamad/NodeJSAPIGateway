@@ -10,7 +10,7 @@ import { scenarioOneService } from "./scenario/ScenarioOneService.js";
  *
  * @return { Promise<*|number> }
  */
-async function get() {
+async function get () {
 
     /**
      * terminalSource menampung nilai hasil dari queries database
@@ -20,7 +20,8 @@ async function get() {
     const terminalSource = await vocabRepository.get();
 
     /**
-     * terminalSource dikirimkan ke dalam parameter function getRandomArrayValue dan kemudian
+     * terminalSource dikirimkan ke dalam
+     * parameter function getRandomArrayValue dan kemudian
      * pengembaliannya ditampung oleh objectFromArray
      *
      * @type {
@@ -122,13 +123,23 @@ async function get() {
      *      }
      * }
      */
-    const objectFromArray = getRandomArrayValue(terminalSource[getRandomIndexArray(terminalSource)])._doc;
+    const objectFromArray =
+        getRandomArrayValue(
+            terminalSource[
+                getRandomIndexArray(terminalSource)
+            ]
+        )._doc;
 
     if (objectFromArray === 505) {
         return 505;
     }
 
-    return getRandomObjectValue(objectFromArray, ["_id"], "vocabService.get", scenarioOneService);
+    return getRandomObjectValue(
+        objectFromArray,
+        [ "_id" ],
+        "vocabService.get",
+        scenarioOneService
+    );
 }
 
 export default { get };

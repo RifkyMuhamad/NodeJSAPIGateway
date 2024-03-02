@@ -6,16 +6,14 @@ import { exceptVocab, exceptLang } from "../config/AppConfig.js";
  * @param { String } criteria
  * @return { Boolean }
  */
-function checkExcludedVocabOrLanguage(values, criteria = "vocab") {
+function checkExcludedVocabOrLanguage (values, criteria = "vocab") {
     switch (criteria) {
-        case "vocab":
-            console.log(exceptVocab)
-            return exceptVocab.includes(values);
-        case "lang":
-            console.log(exceptLang)
-            return values.some(value => exceptLang.includes(value))
-        default:
-            return false;
+    case "vocab":
+        return exceptVocab.includes(values);
+    case "lang":
+        return values.some(value => exceptLang.includes(value));
+    default:
+        return false;
     }
 }
 
@@ -24,8 +22,8 @@ function checkExcludedVocabOrLanguage(values, criteria = "vocab") {
  * @param { String[] } values
  * @return { String[] }
  */
-function filterExceptList(values){
+function filterExceptList (values) {
     return values.filter(value => !exceptLang.includes(value));
 }
 
-export { checkExcludedVocabOrLanguage, filterExceptList }
+export { checkExcludedVocabOrLanguage, filterExceptList };

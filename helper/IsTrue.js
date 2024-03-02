@@ -2,7 +2,7 @@
  * Function isTrue digunakan untuk pengkondisian
  * @returns boolean
  */
-function isTrue() {
+function isTrue () {
     return Math.random() < 0.5;
 }
 

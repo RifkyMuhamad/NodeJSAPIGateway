@@ -5,4 +5,4 @@ const exceptLang = [];
 
 const justThisLang = [];
 
-export { exceptVocab, exceptLang, justThisLang }
+export { exceptVocab, exceptLang, justThisLang };

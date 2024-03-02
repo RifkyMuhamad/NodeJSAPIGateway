@@ -1,28 +1,41 @@
 import { getRandomIndexArray } from "./GetRandomIndexArray.js";
+import { logger } from "../log/log.js";
 
-function getRandomObjectValue(obj, except, functionCall, ...scenario){
+function getRandomObjectValue (obj, except, functionCall, ...scenario) {
 
     // jika object berisi properti kosong
     if (Object.keys(obj).length === 0) {
-        console.error(`Object yang kamu masukkan ke dalam parameter function ${getRandomObjectValue.name} bernilai kosong`);
-        process.exit();
+        logger.log({
+            level: "error",
+            message:
+                `Object yang kamu masukkan ke dalam parameter function ${
+                    getRandomObjectValue.name } bernilai kosong`
+        });
     }
 
     /**
-     * exceptFilteredKeys menampung properti dari database kecuali properti _id
+     * exceptFilteredKeys menampung
+     * properti dari database kecuali properti _id
      *
      * @type { String[] }
      */
-    const exceptFilteredKeys = Object.keys(obj).filter((key) => !except.includes(key));
+    const exceptFilteredKeys =
+        Object.keys(obj)
+            .filter((key) =>
+                !except.includes(key)
+            );
 
     // filter properti validation
     if (exceptFilteredKeys.length === 0) {
-        console.error("Semua properti dikecualikan");
-        process.exit();
+        logger.log({
+            level: "error",
+            message: "Semua properti dikecualikan"
+        });
     }
 
     /**
-     * filteredKeys menampung properti vocabulary, explanation dan bahasa yang memiliki
+     * filteredKeys menampung properti vocabulary,
+     * explanation dan bahasa yang memiliki
      * setidaknya satu vocab
      *
      * @type { String[] }
@@ -37,7 +50,10 @@ function getRandomObjectValue(obj, except, functionCall, ...scenario){
      *
      * @type { String }
      */
-    const vocabularyValue = obj[filteredKeys[filteredKeys.indexOf("vocabulary")]];
+    const vocabularyValue =
+        obj[filteredKeys[
+            filteredKeys.indexOf("vocabulary")
+        ]];
 
     let returnValue;
 
@@ -47,7 +63,9 @@ function getRandomObjectValue(obj, except, functionCall, ...scenario){
             filteredKeys,
             filteredKeys[filteredKeys.indexOf("vocabulary")],
             vocabularyValue,
-            filteredKeys.filter((key) => !["vocabulary", "explanation"].includes(key))
+            filteredKeys.filter((key) =>
+                ![ "vocabulary", "explanation" ].includes(key)
+            )
         );
     } else if (functionCall === "programmingMainEngine") {
         returnValue = 1;
@@ -58,4 +76,4 @@ function getRandomObjectValue(obj, except, functionCall, ...scenario){
     return returnValue;
 }
 
-export { getRandomObjectValue }
+export { getRandomObjectValue };

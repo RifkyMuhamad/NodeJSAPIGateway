@@ -13,6 +13,7 @@ dotenv.config();
  *
  * @type { Number }
  */
+// eslint-disable-next-line no-undef
 const port = process.env.PORT;
 
 /**
@@ -23,9 +24,9 @@ const port = process.env.PORT;
 const app = express();
 
 
-//////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////
 // add cors code for development from test.txt
-//////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////
 
 /** Mengatur req body harus json */
 app.use(express.json());
@@ -34,17 +35,22 @@ app.use(express.json());
 app.use(router);
 
 /** Mengatur direktori public bisa diakses public*/
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 /** Database Connection */
-connectMongo(databaseConfig.db);
+connectMongo(databaseConfig.db)
+    .then(() => logger.log({
+        level: "info",
+        message: "MongoDB connected",
+    }))
+    .catch((err) => { throw err; });
 
 
 /** Running Application */
 app.listen(
-  port,
-  logger.log({
-    level: "info",
-    message: `Server is running in port ${port}`,
-  })
+    port,
+    logger.log({
+        level: "info",
+        message: `Server is running in port ${ port }`,
+    })
 );

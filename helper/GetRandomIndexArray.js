@@ -1,4 +1,4 @@
-function getRandomIndexArray(array) {
+function getRandomIndexArray (array) {
     return !array.length ? "" : Math.floor(Math.random() * array.length);
 }
 

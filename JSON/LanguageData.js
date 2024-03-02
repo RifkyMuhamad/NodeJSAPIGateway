@@ -1,4 +1,3 @@
-import { isTrue } from "../helper/IsTrue.js";
 import { getRandomIndexArray } from "../helper/GetRandomIndexArray.js";
 
 /**
@@ -7,44 +6,58 @@ import { getRandomIndexArray } from "../helper/GetRandomIndexArray.js";
  *
  * @param { String } choiceLanguage
  *
- * @returns { { vocabulary: String, latin: String | (function(Object): (String | String[])) } }
+ * @returns {
+ *     {
+ *         vocabulary: String,
+ *         latin: String | (function(Object): (String | String[]))
+ *     }
+ * }
  */
-function languageDataService(choiceLanguage){
+function languageDataService (choiceLanguage) {
 
     const languageMappings = {
         japanese: {
-            vocabulary: 'kanji',
+            vocabulary: "kanji",
             latin: (choiceLatin) => {
                 return choiceLatin.furigana.length === 1
                     ? choiceLatin.furigana[0]
-                    : choiceLatin.furigana[getRandomIndexArray(choiceLatin.furigana)]
+                    : choiceLatin.furigana[
+                        getRandomIndexArray(choiceLatin.furigana)
+                    ];
             }
         },
         korean: {
-            vocabulary: 'hangul',
-            latin: 'latin'
+            vocabulary: "hangul",
+            latin: "latin"
         },
         chinese: {
-            vocabulary: 'hanzi',
-            latin: 'latin'
+            vocabulary: "hanzi",
+            // latin: "latin"
+            latin: (choiceLatin) => {
+                return choiceLatin.latin.length === 1
+                    ? choiceLatin.latin[0]
+                    : choiceLatin.latin[
+                        getRandomIndexArray(choiceLatin.latin)
+                    ];
+            }
         },
         arabic: {
-            vocabulary: 'arab',
-            latin: 'latin'
+            vocabulary: "arab",
+            latin: "latin"
         },
         greek: {
-            vocabulary: 'vocab',
-            latin: 'latin'
+            vocabulary: "vocab",
+            latin: "latin"
         },
         thai: {
-            vocabulary: 'thai',
-            latin: 'latin'
+            vocabulary: "thai",
+            latin: "latin"
         },
         english: {
-            vocabulary: 'vocab',
+            vocabulary: "vocab",
             latin: (choiceLatin) => {
                 // 3
-                return choiceLatin.ipa
+                return choiceLatin.ipa;
 
                 // 2
                 // return choiceLatin.APAAN
@@ -54,28 +67,28 @@ function languageDataService(choiceLanguage){
             },
         },
         russian: {
-            vocabulary: 'cyrilic',
-            latin: 'latin'
+            vocabulary: "cyrilic",
+            latin: "latin"
         },
         french: {
-            vocabulary: 'vocab',
-            latin: 'pronounce'
+            vocabulary: "vocab",
+            latin: "pronounce"
         },
         german: {
-            vocabulary: 'vocab',
-            latin: 'pronounce'
+            vocabulary: "vocab",
+            latin: "pronounce"
         },
         italy: {
-            vocabulary: 'vocab',
-            latin: 'pronounce'
+            vocabulary: "vocab",
+            latin: "pronounce"
         },
         spain: {
-            vocabulary: 'vocab',
-            latin: 'pronounce'
+            vocabulary: "vocab",
+            latin: "pronounce"
         }
     };
 
     return languageMappings[choiceLanguage];
 }
 
-export { languageDataService }
+export { languageDataService };

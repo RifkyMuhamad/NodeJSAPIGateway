@@ -1,5 +1,8 @@
+// eslint-disable-next-line max-len
 import { checkExcludedVocabOrLanguage, filterExceptList } from "../../helper/IsChoiceLangInExceptList.js";
+// eslint-disable-next-line max-len
 import { isHasPriorityLang, isChoiceLangIsPriority, filterPriorityLang } from "../../helper/IsChoiceLangIsPriority.js";
+// eslint-disable-next-line max-len
 import { getRandomIndexArray } from "../../helper/GetRandomIndexArray.js";
 import { languageDataService } from "../../JSON/LanguageData.js";
 
@@ -103,21 +106,31 @@ import { languageDataService } from "../../JSON/LanguageData.js";
  *          }
  *      }
  * } obj berisi object hasil dari findAll database
- * @param { String[] } filteredKeys berisi properti vocabulary, explanation dan bahasa yang memiliki setidaknya satu vocab
- * @param { String } vocabProperty berisi properti vocabulary
+ * @param { String[] } filteredKeys
+ *     berisi properti vocabulary,
+ *     explanation dan bahasa yang
+ *     memiliki setidaknya satu vocab
+ * @param { String } vocabProperty
+ *     berisi properti vocabulary
  * @param { String } vocabValue berisi nilai dari properti vocabulary
  * @param { String[] } filteredLanguages
  * @return { ( Number | String | String )[] | *[] }
  */
-function scenarioOneService(obj, filteredKeys, vocabProperty, vocabValue, filteredLanguages) {
+function scenarioOneService (
+    obj,
+    filteredKeys,
+    vocabProperty,
+    vocabValue,
+    filteredLanguages
+) {
 
     /**
      *
      * @type { ( Number | String | String )[] }
      */
-    const returnValue = [1, `${vocabProperty}`, vocabValue];
+    const returnValue = [ 1, "indonesia", vocabValue ];
 
-    if (filteredLanguages.length === 0){
+    if (filteredLanguages.length === 0) {
         return [];
     }
 
@@ -141,35 +154,45 @@ function scenarioOneService(obj, filteredKeys, vocabProperty, vocabValue, filter
     const shuffledLanguages = shuffleArray(newFilteredLanguages);
 
     if (isHasPriorityLang()) {
-        if (isChoiceLangIsPriority(shuffledLanguages)){
+        if (isChoiceLangIsPriority(shuffledLanguages)) {
             const priorityLang = filterPriorityLang(shuffledLanguages);
-            iterateArray(priorityLang, obj, returnValue, shuffledLanguages);
+            iterateArray(priorityLang, obj, returnValue);
         } else {
             return [];
         }
     } else {
-        iterateArray(shuffledLanguages, obj, returnValue, shuffledLanguages)
+        iterateArray(shuffledLanguages, obj, returnValue);
     }
 
     return returnValue;
 }
 
-function shuffleArray(array) {
+function shuffleArray (array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+        [ array[i], array[j] ] = [ array[j], array[i] ];
     }
     return array;
 }
 
-function iterateArray(language, obj, returnValue, shuffledLanguages){
+function iterateArray (language, obj, returnValue) {
     for (const choiceLanguage of language) {
         const languageData = languageDataService(choiceLanguage);
         if (!languageData) continue;
-        const choiceVocab = obj[choiceLanguage].vocab[getRandomIndexArray(obj[choiceLanguage].vocab)];
+        const choiceVocab =
+            obj[choiceLanguage]
+                .vocab[
+                    getRandomIndexArray(
+                        obj[choiceLanguage].vocab
+                    )
+                ];
         const vocabulary = choiceVocab[languageData.vocabulary];
         const latinValue = languageData.latin;
-        const latin = latinValue ? ( typeof latinValue === "function" ? latinValue(choiceVocab) : choiceVocab[latinValue] ) : undefined;
+        const latin = latinValue
+            ? ( typeof latinValue === "function"
+                ? latinValue(choiceVocab)
+                : choiceVocab[latinValue] )
+            : undefined;
         if (checkExcludedVocabOrLanguage(vocabulary)) continue;
         returnValue.push(choiceLanguage, vocabulary);
         if (latin !== undefined) returnValue.push(choiceLanguage, latin);

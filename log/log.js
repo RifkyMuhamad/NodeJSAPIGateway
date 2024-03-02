@@ -6,5 +6,5 @@ import winston from "winston";
  * @type { winston.Logger }
  */
 export const logger = winston.createLogger({
-  transports: [new winston.transports.Console()],
+    transports: [ new winston.transports.Console() ],
 });

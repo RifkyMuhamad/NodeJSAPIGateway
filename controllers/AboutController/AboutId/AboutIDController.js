@@ -1,13 +1,9 @@
-/**
- *
- * @param req
- * @param res
- * @return {Promise<void>}
- */
 // eslint-disable-next-line require-await
 async function get (req, res) {
+    const id = req.params.id;
     res.json({
-        message: "DyoneStrankers use Express",
+        message: "DyoneStrankers in About",
+        id: `${ id } baru juga`,
     });
 }
 
