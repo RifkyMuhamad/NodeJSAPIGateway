@@ -1,9 +1,8 @@
 import {
-    exceptVocab,
-    exceptLang,
-    justThisLang
+    setJustThisLang, setExceptVocab, setExceptLang
 } from "../../config/AppConfig.js";
 import vocabService from "../../services/VocabService.js";
+import {setAppConfigFromQueryParam} from "../../helper/SetAppConfigFromQueryParam.js";
 
 /**
  * Function get milik VocabController ini
@@ -24,29 +23,10 @@ import vocabService from "../../services/VocabService.js";
  */
 async function get (req, res) {
 
-    if (req.query.justThisLang && req.query.justThisLang !== "") {
-        req.query.justThisLang
-            .split(",")
-            .forEach(item =>
-                justThisLang.push(item.trim())
-            );
-    }
 
-    if (req.query.exceptVocab && req.query.exceptVocab !== "") {
-        req.query.exceptVocab
-            .split(",")
-            .forEach(item =>
-                exceptVocab.push(item.trim())
-            );
-    }
-
-    if (req.query.exceptLang && req.query.exceptLang !== "") {
-        req.query.exceptLang
-            .split(",")
-            .forEach(item =>
-                exceptLang.push(item.trim())
-            );
-    }
+    setAppConfigFromQueryParam(req.query.justThisLang, "JTL");
+    setAppConfigFromQueryParam(req.query.exceptVocab, "EV");
+    setAppConfigFromQueryParam(req.query.exceptLang, "EL");
 
     /**
      * Variable result ini menampung array untuk response
@@ -62,9 +42,9 @@ async function get (req, res) {
             result: result,
         });
 
-        justThisLang.length = 0;
-        exceptVocab.length = 0;
-        exceptLang.length = 0;
+        setJustThisLang([]);
+        setExceptVocab([]);
+        setExceptLang([]);
     }
 }
 

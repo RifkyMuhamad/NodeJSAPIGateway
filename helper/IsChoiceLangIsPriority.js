@@ -1,4 +1,4 @@
-import { justThisLang } from "../config/AppConfig.js";
+import {getJustThisLang} from "../config/AppConfig.js";
 
 /**
  *
@@ -6,15 +6,15 @@ import { justThisLang } from "../config/AppConfig.js";
  * @return {*}
  */
 function isChoiceLangIsPriority (choiceLang) {
-    return choiceLang.some(value => justThisLang.includes(value));
+    return choiceLang.some(value => getJustThisLang().includes(value));
 }
 
 function filterPriorityLang (choiceLang) {
-    return choiceLang.filter(choice => justThisLang.includes(choice));
+    return choiceLang.filter(choice => getJustThisLang().includes(choice));
 }
 
 function isHasPriorityLang () {
-    return justThisLang.length !== 0;
+    return getJustThisLang().length !== 0;
 }
 
 export { isChoiceLangIsPriority, filterPriorityLang, isHasPriorityLang };

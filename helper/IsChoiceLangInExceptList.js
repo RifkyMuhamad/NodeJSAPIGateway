@@ -1,4 +1,4 @@
-import { exceptVocab, exceptLang } from "../config/AppConfig.js";
+import {getExceptLang, getExceptVocab} from "../config/AppConfig.js";
 
 /**
  *
@@ -9,9 +9,9 @@ import { exceptVocab, exceptLang } from "../config/AppConfig.js";
 function checkExcludedVocabOrLanguage (values, criteria = "vocab") {
     switch (criteria) {
     case "vocab":
-        return exceptVocab.includes(values);
+        return getExceptVocab().includes(values);
     case "lang":
-        return values.some(value => exceptLang.includes(value));
+        return values.some(value => getExceptLang().includes(value));
     default:
         return false;
     }
@@ -23,7 +23,7 @@ function checkExcludedVocabOrLanguage (values, criteria = "vocab") {
  * @return { String[] }
  */
 function filterExceptList (values) {
-    return values.filter(value => !exceptLang.includes(value));
+    return values.filter(value => !getExceptLang().includes(value));
 }
 
 export { checkExcludedVocabOrLanguage, filterExceptList };

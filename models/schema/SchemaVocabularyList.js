@@ -470,7 +470,7 @@ const finnishVocabSchema = new Schema(
  */
 const vocabularySchema = new Schema(
     {
-        vocabulary: String,
+        vocabulary: Schema.Types.Mixed,
         explanation: [ String ],
         japanese: {
             vocab: [ japaneseVocabSchema ],

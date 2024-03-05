@@ -48,12 +48,17 @@ function getRandomObjectValue (obj, except, functionCall, ...scenario) {
     /**
      * vocabularyValue menampung nilai vocab dalam bahasa indonesia
      *
-     * @type { String }
+     * @type { String || String[] }
      */
     const vocabularyValue =
         obj[filteredKeys[
             filteredKeys.indexOf("vocabulary")
         ]];
+
+    const newVocabularyValue =
+        Array.isArray(vocabularyValue)
+            ? vocabularyValue[getRandomIndexArray(vocabularyValue)]
+            : vocabularyValue;
 
     let returnValue;
 
@@ -62,7 +67,7 @@ function getRandomObjectValue (obj, except, functionCall, ...scenario) {
             obj,
             filteredKeys,
             filteredKeys[filteredKeys.indexOf("vocabulary")],
-            vocabularyValue,
+            newVocabularyValue,
             filteredKeys.filter((key) =>
                 ![ "vocabulary", "explanation" ].includes(key)
             )

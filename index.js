@@ -38,7 +38,7 @@ app.use(router);
 app.use(express.static("public"));
 
 /** Database Connection */
-connectMongo(databaseConfig.db)
+connectMongo(databaseConfig)
     .then(() => logger.log({
         level: "info",
         message: "MongoDB connected",

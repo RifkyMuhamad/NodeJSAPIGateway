@@ -1,8 +1,32 @@
 // pr
-const exceptVocab = [];
+let exceptVocab = [];
 
-const exceptLang = [];
+function setExceptVocab(value) {
+    exceptVocab = value;
+}
 
-const justThisLang = [];
+function getExceptVocab() {
+    return exceptVocab;
+}
 
-export { exceptVocab, exceptLang, justThisLang };
+let exceptLang = [];
+
+function setExceptLang(value) {
+    exceptLang = value
+}
+
+function getExceptLang() {
+    return exceptLang;
+}
+
+let justThisLang = [];
+
+function setJustThisLang(value){
+    justThisLang = value;
+}
+
+function getJustThisLang() {
+    return justThisLang;
+}
+
+export { setExceptVocab, getExceptVocab , setExceptLang, getExceptLang, setJustThisLang, getJustThisLang };

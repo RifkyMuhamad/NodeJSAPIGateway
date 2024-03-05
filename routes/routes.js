@@ -10,8 +10,6 @@ import aboutIDController from "../controllers/AboutController/AboutId/AboutIDCon
 import navbarItemsController from "../controllers/NavbarItemsController/NavbarItemsController.js";
 // eslint-disable-next-line max-len
 import profileTitleController from "../controllers/ProfileTitleController/ProfileTitleController.js";
-// eslint-disable-next-line max-len
-import profileImageController from "../controllers/ProfileImageController/ProfileImageController.js";
 
 /**
  * A router serves as a container for various routes used
@@ -25,7 +23,6 @@ router.get("/about", aboutController.get);
 router.get("/about/:id", aboutIDController.get);
 router.get("/global/navbar/items", navbarItemsController.get);
 router.get("/profile/titles", profileTitleController.get);
-router.get("/profile/image/python-api-gateway", profileImageController.get);
 router.get("/project/memory-language", vocabController.get);
 
 
