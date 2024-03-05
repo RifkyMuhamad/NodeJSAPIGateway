@@ -2,19 +2,22 @@ import { setExceptLang, setExceptVocab, setJustThisLang } from "../config/AppCon
 import {isStringArrayBlank} from "./IsStringArrayBlank.js";
 
 function setAppConfigFromQueryParam(value, param){
-    if (value.trim() !== '') {
-        const arrayHasil = value.slice(1, -1).split(',');
-        if (!isStringArrayBlank(arrayHasil)) {
-            switch (param) {
-                case "JTL":
-                    setJustThisLang(arrayHasil);
-                    break;
-                case "EL":
-                    setExceptLang(arrayHasil);
-                    break;
-                case "EV":
-                    setExceptVocab(arrayHasil);
-                    break;
+    if (typeof value !== 'undefined' && value !== null) {
+        const cleanValue = value.trim();
+        if (cleanValue) {
+            const arrayHasil = cleanValue.slice(1, -1).split(',');
+            if (!isStringArrayBlank(arrayHasil)) {
+                switch (param) {
+                    case "JTL":
+                        setJustThisLang(arrayHasil);
+                        break;
+                    case "EL":
+                        setExceptLang(arrayHasil);
+                        break;
+                    case "EV":
+                        setExceptVocab(arrayHasil);
+                        break;
+                }
             }
         }
     }
