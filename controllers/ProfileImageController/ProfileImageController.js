@@ -8,6 +8,7 @@
 //             "./assets/python_api_gateway_card.jpg"
 //         );
 //
+// eslint-disable-next-line max-len
 //         // Konversi buffer ke base64 untuk menyertakan gambar dalam respons JSON
 //         const base64Image = imageBuffer.toString("base64");
 //

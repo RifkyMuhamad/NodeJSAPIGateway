@@ -1,15 +1,15 @@
 let terminalSource = [];
 
-function setTerminalSource(value){
-    terminalSource = value
+function setTerminalSource (value) {
+    terminalSource = value;
 }
 
-function getTerminalSource() {
-    return terminalSource
+function getTerminalSource () {
+    return terminalSource;
 }
 
-function addTerminalSource(value) {
-    terminalSource.push(value)
+function addTerminalSource (value) {
+    terminalSource.push(value);
 }
 
-export { addTerminalSource, getTerminalSource, setTerminalSource }
+export { addTerminalSource, getTerminalSource, setTerminalSource };

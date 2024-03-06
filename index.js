@@ -4,7 +4,7 @@ import { logger } from "./log/log.js";
 import router from "./routes/routes.js";
 import { connectMongo } from "./database/DBConnect.js";
 import { databaseConfig } from "./config/DatabaseConfig.js";
-import {getTerminalSource, setTerminalSource} from "./config/TerminalSourceConfig.js";
+import { setTerminalSource } from "./config/TerminalSourceConfig.js";
 
 /** Mengatur server akan mengakses variable environment*/
 dotenv.config();
@@ -38,6 +38,7 @@ app.use(router);
 /** Mengatur direktori public bisa diakses public*/
 app.use(express.static("public"));
 
+// eslint-disable-next-line no-undef
 setInterval(() => {
     setTerminalSource([]);
 }, 21600000);

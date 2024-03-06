@@ -1,4 +1,4 @@
-import {getJustThisLang} from "../config/AppConfig.js";
+import { getJustThisLang } from "../config/AppConfig.js";
 
 /**
  *

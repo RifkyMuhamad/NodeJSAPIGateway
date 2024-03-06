@@ -2,7 +2,8 @@ import {
     setJustThisLang, setExceptVocab, setExceptLang
 } from "../../config/AppConfig.js";
 import vocabService from "../../services/VocabService.js";
-import {setAppConfigFromQueryParam} from "../../helper/SetAppConfigFromQueryParam.js";
+// eslint-disable-next-line max-len
+import { setAppConfigFromQueryParam } from "../../helper/SetAppConfigFromQueryParam.js";
 
 /**
  * Function get milik VocabController ini

@@ -1,32 +1,39 @@
 // pr
 let exceptVocab = [];
 
-function setExceptVocab(value) {
+function setExceptVocab (value) {
     exceptVocab = value;
 }
 
-function getExceptVocab() {
+function getExceptVocab () {
     return exceptVocab;
 }
 
 let exceptLang = [];
 
-function setExceptLang(value) {
-    exceptLang = value
+function setExceptLang (value) {
+    exceptLang = value;
 }
 
-function getExceptLang() {
+function getExceptLang () {
     return exceptLang;
 }
 
 let justThisLang = [];
 
-function setJustThisLang(value){
+function setJustThisLang (value) {
     justThisLang = value;
 }
 
-function getJustThisLang() {
+function getJustThisLang () {
     return justThisLang;
 }
 
-export { setExceptVocab, getExceptVocab , setExceptLang, getExceptLang, setJustThisLang, getJustThisLang };
+export {
+    setExceptVocab,
+    getExceptVocab ,
+    setExceptLang,
+    getExceptLang,
+    setJustThisLang,
+    getJustThisLang
+};

@@ -1,4 +1,4 @@
-import {getExceptLang, getExceptVocab} from "../config/AppConfig.js";
+import { getExceptLang, getExceptVocab } from "../config/AppConfig.js";
 
 /**
  *
