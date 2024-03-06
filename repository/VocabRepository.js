@@ -8,6 +8,7 @@ import {Planet} from "../models/PlanetModels.js";
 import {Pronoun} from "../models/PronounModels.js";
 import {RandomVocab} from "../models/RandomVocabModels.js";
 import {Time} from "../models/TimeModels.js";
+import {addTerminalSource, getTerminalSource} from "../config/TerminalSourceConfig.js";
 
 /**
  * Function VocabRepository.get digunakan untuk melakukan
@@ -17,7 +18,6 @@ import {Time} from "../models/TimeModels.js";
  */
 async function get () {
     try {
-        const terminalSource = [];
         const animal = await Animal.find();
         const fruit = await Fruit.find();
         const cardinalDirection = await CardinalDirection.find();
@@ -28,17 +28,18 @@ async function get () {
         const randomVocab = await RandomVocab.find();
         const time = await Time.find();
 
-        terminalSource.push(animal);
-        terminalSource.push(fruit);
-        terminalSource.push(cardinalDirection);
-        terminalSource.push(drink);
-        terminalSource.push(number);
-        terminalSource.push(planet);
-        terminalSource.push(pronoun);
-        terminalSource.push(randomVocab);
-        terminalSource.push(time);
+        addTerminalSource(animal);
+        addTerminalSource(fruit);
+        addTerminalSource(cardinalDirection);
+        addTerminalSource(drink);
+        addTerminalSource(number);
+        addTerminalSource(planet);
+        addTerminalSource(pronoun);
+        addTerminalSource(randomVocab);
+        addTerminalSource(time);
 
-        return terminalSource;
+        return getTerminalSource();
+
     } catch (error) {
         logger.log({
             level: "error",

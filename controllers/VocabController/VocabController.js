@@ -23,7 +23,6 @@ import {setAppConfigFromQueryParam} from "../../helper/SetAppConfigFromQueryPara
  */
 async function get (req, res) {
 
-
     setAppConfigFromQueryParam(req.query.justThisLang, "JTL");
     setAppConfigFromQueryParam(req.query.exceptVocab, "EV");
     setAppConfigFromQueryParam(req.query.exceptLang, "EL");

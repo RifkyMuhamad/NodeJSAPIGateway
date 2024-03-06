@@ -1,5 +1,5 @@
 import { setExceptLang, setExceptVocab, setJustThisLang } from "../config/AppConfig.js";
-import {isStringArrayBlank} from "./IsStringArrayBlank.js";
+import { isStringArrayBlank } from "./IsStringArrayBlank.js";
 
 function setAppConfigFromQueryParam(value, param){
     if (typeof value !== 'undefined' && value !== null) {

@@ -3,6 +3,7 @@ import { getRandomArrayValue } from "../helper/GetRandomArrayValue.js";
 import { getRandomIndexArray } from "../helper/GetRandomIndexArray.js";
 import { getRandomObjectValue } from "../helper/GetRandomObjectValue.js";
 import { scenarioOneService } from "./scenario/ScenarioOneService.js";
+import {getTerminalSource} from "../config/TerminalSourceConfig.js";
 
 /**
  * Function get milik VocabService ini berguna sebagai logika bisnis
@@ -17,7 +18,8 @@ async function get () {
      *
      * @type { String[] }
      */
-    const terminalSource = await vocabRepository.get();
+    const terminalSource =
+        getTerminalSource().length === 0 ? await vocabRepository.get() : getTerminalSource();
 
     /**
      * terminalSource dikirimkan ke dalam
