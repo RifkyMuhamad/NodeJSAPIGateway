@@ -7,23 +7,18 @@ import { isStringArrayBlank } from "./IsStringArrayBlank.js";
 
 function setAppConfigFromQueryParam (value, param) {
     if (typeof value !== "undefined" && value !== null) {
-        const cleanValue = value.trim();
-        if (cleanValue) {
-            const arrayHasil = cleanValue.slice(1, -1).split(",");
-            if (!isStringArrayBlank(arrayHasil)) {
+        const parts = JSON.parse(value)
                 switch (param) {
                 case "JTL":
-                    setJustThisLang(arrayHasil);
+                    setJustThisLang(parts);
                     break;
                 case "EL":
-                    setExceptLang(arrayHasil);
+                    setExceptLang(parts);
                     break;
                 case "EV":
-                    setExceptVocab(arrayHasil);
+                    setExceptVocab(parts);
                     break;
                 }
-            }
-        }
     }
 }
 

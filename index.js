@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
-import { logger } from "./log/log.js";
 import router from "./routes/routes.js";
+import { logger } from "./log/log.js";
 import { connectMongo } from "./database/DBConnect.js";
 import { databaseConfig } from "./config/DatabaseConfig.js";
 import { setTerminalSource } from "./config/TerminalSourceConfig.js";
@@ -27,6 +27,18 @@ const app = express();
 
 ////////////////////////////////
 // add cors code for development from test.txt
+import cors from "cors";
+
+const portOrigin = process.env.PORTORIGIN;
+
+const middlewares = [
+  cors({ credentials: true, origin: portOrigin }),
+  express.json(),
+];
+
+for (const middleware of middlewares) {
+  app.use(middleware);
+}
 ////////////////////////////////
 
 /** Mengatur req body harus json */
