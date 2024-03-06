@@ -27,18 +27,6 @@ const app = express();
 
 ////////////////////////////////
 // add cors code for development from test.txt
-import cors from "cors";
-
-const portOrigin = process.env.PORTORIGIN;
-
-const middlewares = [
-  cors({ credentials: true, origin: portOrigin }),
-  express.json(),
-];
-
-for (const middleware of middlewares) {
-  app.use(middleware);
-}
 ////////////////////////////////
 
 /** Mengatur req body harus json */
