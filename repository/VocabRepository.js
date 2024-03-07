@@ -8,8 +8,10 @@ import { Planet } from "../models/PlanetModels.js";
 import { Pronoun } from "../models/PronounModels.js";
 import { RandomVocab } from "../models/RandomVocabModels.js";
 import { Time } from "../models/TimeModels.js";
-// eslint-disable-next-line max-len
-import { addTerminalSource, getTerminalSource } from "../config/TerminalSourceConfig.js";
+import {
+    addTerminalSource,
+    getTerminalSource
+} from "../config/TerminalSourceConfig.js";
 
 /**
  * Function VocabRepository.get digunakan untuk melakukan

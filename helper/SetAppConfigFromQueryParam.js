@@ -5,20 +5,22 @@ import {
 } from "../config/AppConfig.js";
 import { isStringArrayBlank } from "./IsStringArrayBlank.js";
 
-function setAppConfigFromQueryParam (value, param) {
+function setAppConfigFromQueryParam (value, arrayConfig) {
     if (typeof value !== "undefined" && value !== null) {
-        const parts = JSON.parse(value)
-                switch (param) {
+        if (value !== "") {
+            const arrayResult = JSON.parse(value)
+            switch (arrayConfig) {
                 case "JTL":
-                    setJustThisLang(parts);
+                    setJustThisLang(arrayResult);
                     break;
                 case "EL":
-                    setExceptLang(parts);
+                    setExceptLang(arrayResult);
                     break;
                 case "EV":
-                    setExceptVocab(parts);
+                    setExceptVocab(arrayResult);
                     break;
-                }
+            }
+        }
     }
 }
 
