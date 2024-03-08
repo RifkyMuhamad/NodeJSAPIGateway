@@ -1,17 +1,17 @@
-import { Animal } from "../models/AnimalModels.js";
-import { Fruit } from "../models/FruitModels.js";
-import { logger } from "../log/log.js";
-import { CardinalDirection } from "../models/CardinalDirectionModels.js";
-import { Drink } from "../models/DrinkModels.js";
-import { Number } from "../models/NumberModels.js";
-import { Planet } from "../models/PlanetModels.js";
-import { Pronoun } from "../models/PronounModels.js";
-import { RandomVocab } from "../models/RandomVocabModels.js";
-import { Time } from "../models/TimeModels.js";
+import { Animal } from "../../models/AnimalModels.js";
+import { Fruit } from "../../models/FruitModels.js";
+import { logger } from "../../log/log.js";
+import { CardinalDirection } from "../../models/CardinalDirectionModels.js";
+import { Drink } from "../../models/DrinkModels.js";
+import { Number } from "../../models/NumberModels.js";
+import { Planet } from "../../models/PlanetModels.js";
+import { Pronoun } from "../../models/PronounModels.js";
+import { RandomVocab } from "../../models/RandomVocabModels.js";
+import { Time } from "../../models/TimeModels.js";
 import {
     addTerminalSource,
     getTerminalSource
-} from "../config/TerminalSourceConfig.js";
+} from "../../config/TerminalSourceConfig.js";
 
 /**
  * Function VocabRepository.get digunakan untuk melakukan

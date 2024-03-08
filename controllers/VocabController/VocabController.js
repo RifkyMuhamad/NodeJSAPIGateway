@@ -3,7 +3,7 @@ import {
     setExceptVocab,
     setExceptLang
 } from "../../config/AppConfig.js";
-import vocabService from "../../services/VocabService.js";
+import vocabService from "../../services/VocabService/VocabService.js";
 import {
     setAppConfigFromQueryParam
 } from "../../helper/SetAppConfigFromQueryParam.js";

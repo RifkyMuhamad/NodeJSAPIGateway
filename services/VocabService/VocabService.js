@@ -1,9 +1,9 @@
-import vocabRepository from "../repository/VocabRepository.js";
-import { getRandomArrayValue } from "../helper/GetRandomArrayValue.js";
-import { getRandomIndexArray } from "../helper/GetRandomIndexArray.js";
-import { getRandomObjectValue } from "../helper/GetRandomObjectValue.js";
-import { scenarioOneService } from "./scenario/ScenarioOneService.js";
-import { getTerminalSource } from "../config/TerminalSourceConfig.js";
+import vocabRepository from "../../repository/VocabRepository/VocabRepository.js";
+import { getRandomArrayValue } from "../../helper/GetRandomArrayValue.js";
+import { getRandomIndexArray } from "../../helper/GetRandomIndexArray.js";
+import { getRandomObjectValue } from "../../helper/GetRandomObjectValue.js";
+import { scenarioOneService } from "../scenario/ScenarioOneService.js";
+import { getTerminalSource } from "../../config/TerminalSourceConfig.js";
 
 /**
  * Function get milik VocabService ini berguna sebagai logika bisnis
