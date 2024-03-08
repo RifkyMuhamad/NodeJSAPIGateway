@@ -61,6 +61,6 @@ app.listen(
     port,
     logger.log({
         level: "info",
-        message: `Server is running in port ${ port }`,
+        message: `Server is running in port ${ port }\nNilai terminalSource ${getTerminalSource()}`,
     })
 );
