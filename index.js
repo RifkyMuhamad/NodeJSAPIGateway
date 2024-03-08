@@ -55,12 +55,16 @@ connectMongo(databaseConfig)
     }))
     .catch((err) => { throw err; });
 
+logger.log({
+    level: "info",
+    message: `Nilai terminalSource ${getTerminalSource()}`,
+})
 
 /** Running Application */
 app.listen(
     port,
     logger.log({
         level: "info",
-        message: `Server is running in port ${ port }\nNilai terminalSource ${getTerminalSource()}`,
+        message: `Server is running in port ${ port }`,
     })
 );

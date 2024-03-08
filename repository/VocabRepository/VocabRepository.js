@@ -41,6 +41,11 @@ async function get () {
         addTerminalSource(randomVocab);
         addTerminalSource(time);
 
+        logger.log({
+            level: "info",
+            message: `Nilai terminalSource ${getTerminalSource()}`,
+        })
+
         return getTerminalSource();
 
     } catch (error) {
