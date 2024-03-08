@@ -13,6 +13,7 @@ async function get() {
             level: "error",
             message: `Terjadi kesalahan ${ error }`,
         })
+
         return [
             "pronouns",
             "drinks",
