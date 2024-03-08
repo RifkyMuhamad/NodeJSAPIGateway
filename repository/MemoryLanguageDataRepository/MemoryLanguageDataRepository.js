@@ -13,7 +13,17 @@ async function get() {
             level: "error",
             message: `Terjadi kesalahan ${ error }`,
         })
-        return "Kodenya Error";
+        return [
+            "pronouns",
+            "drinks",
+            "numbers",
+            "times",
+            "cardinal directions",
+            "animals",
+            "planets",
+            "fruits",
+            "random vocabs"
+        ];
     }
 }
 
