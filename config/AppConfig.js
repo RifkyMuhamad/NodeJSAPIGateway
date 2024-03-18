@@ -1,4 +1,3 @@
-// pr
 let exceptVocab = [];
 
 function setExceptVocab (value) {
@@ -29,11 +28,23 @@ function getJustThisLang () {
     return justThisLang;
 }
 
+let categories = [];
+
+function setCategories (value) {
+    categories = value
+}
+
+function getCategories() {
+    return categories;
+}
+
 export {
     setExceptVocab,
     getExceptVocab ,
     setExceptLang,
     getExceptLang,
     setJustThisLang,
-    getJustThisLang
+    getJustThisLang,
+    setCategories,
+    getCategories
 };

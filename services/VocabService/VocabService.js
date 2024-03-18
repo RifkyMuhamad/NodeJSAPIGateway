@@ -4,6 +4,7 @@ import { getRandomIndexArray } from "../../helper/GetRandomIndexArray.js";
 import { getRandomObjectValue } from "../../helper/GetRandomObjectValue.js";
 import { scenarioOneService } from "../scenario/ScenarioOneService.js";
 import { getTerminalSource } from "../../config/TerminalSourceConfig.js";
+import {getCategories} from "../../config/AppConfig.js";
 
 /**
  * Function get milik VocabService ini berguna sebagai logika bisnis
@@ -23,115 +24,25 @@ async function get () {
             ? await vocabRepository.get()
             : getTerminalSource();
 
+    const newTerminalSource =
+        getCategories()
+            .map(item =>
+                terminalSource.find(obj =>
+                    obj.hasOwnProperty(item)
+                )[item]);
+
     /**
      * terminalSource dikirimkan ke dalam
      * parameter function getRandomArrayValue dan kemudian
      * pengembaliannya ditampung oleh objectFromArray
      *
-     * @type {
-     *      {
-     *          german: {
-     *              vocab: *[]
-     *          },
-     *          spain: {
-     *              vocab: *[]
-     *          },
-     *          khmer: {
-     *          },
-     *          hebrew: {
-     *              vocab: *[]
-     *          },
-     *          explanation: StringConstructor[]
-     *          , norwegian: {
-     *          },
-     *          dutch: {
-     *          }, chinese: {
-     *          vocab: *[]
-     *          },
-     *          vocabulary: StringConstructor,
-     *          japanese: {
-     *              vocab: *[]
-     *          },
-     *          tamil: {
-     *          },
-     *          arabic: {
-     *              vocab: *[]
-     *          },
-     *          dannish: {
-     *          },
-     *          bengali: {
-     *          },
-     *          urdu: {
-     *          },
-     *          english: {
-     *              vocab: *[]
-     *          },
-     *          argentine: {
-     *          },
-     *          portuguese: {
-     *          },
-     *          lao: {
-     *          },
-     *          french: {
-     *              vocab: *[]
-     *          },
-     *          italy: {
-     *              vocab: *[]
-     *          },
-     *          georgian: {
-     *          },
-     *          greek: {
-     *              vocab: *[]
-     *          },
-     *          swedish: {
-     *              vocab: *[]
-     *          },
-     *          azerbaijan: {
-     *          },
-     *          russian: {
-     *              vocab: *[]
-     *          },
-     *          uzbek: {
-     *          },
-     *          armenian: {
-     *          },
-     *          thai: {
-     *              vocab: *[]
-     *          },
-     *          burmese: {
-     *          },
-     *          vietnamese: {
-     *          },
-     *          korean: {
-     *              vocab: *[]
-     *          },
-     *          turkmen: {
-     *          },
-     *          tajik: {
-     *          },
-     *          persian: {
-     *          },
-     *          tagalog: {
-     *          },
-     *          kyrgyz: {
-     *          },
-     *          finnish: {
-     *              vocab: *[]
-     *          },
-     *          turkish: {
-     *          },
-     *          hindi: {
-     *          },
-     *          kazakh: {
-     *          }
-     *      }
-     * }
+     * @type {*[]}
      */
     const objectFromArray =
         getRandomArrayValue(
-            terminalSource[
-                getRandomIndexArray(terminalSource)
-            ]
+            newTerminalSource[
+                getRandomIndexArray(newTerminalSource)
+                ]
         )._doc;
 
     if (objectFromArray === 505) {

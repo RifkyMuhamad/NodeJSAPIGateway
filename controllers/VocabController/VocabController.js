@@ -3,7 +3,7 @@ import {
     setExceptVocab,
     setExceptLang,
     getJustThisLang,
-    getExceptLang
+    getExceptLang, getCategories
 } from "../../config/AppConfig.js";
 import vocabService from "../../services/VocabService/VocabService.js";
 import { setAppConfigFromQueryParam } from "../../helper/SetAppConfigFromQueryParam.js";
@@ -31,6 +31,7 @@ async function get (req, res) {
     setAppConfigFromQueryParam(req.query.justThisLang, "JTL");
     setAppConfigFromQueryParam(req.query.exceptVocab, "EV");
     setAppConfigFromQueryParam(req.query.exceptLang, "EL");
+    setAppConfigFromQueryParam(req.query.categories, "C");
 
     cleanArrayJustThisLang(getJustThisLang(), getExceptLang());
 

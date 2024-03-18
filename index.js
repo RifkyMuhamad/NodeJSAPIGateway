@@ -27,6 +27,18 @@ const app = express();
 
 ////////////////////////////////
 // add cors code for development from test.txt
+import cors from "cors";
+
+const portOrigin = process.env.PORTORIGIN;
+
+const middlewares = [
+  cors({ credentials: true, origin: portOrigin }),
+  express.json(),
+];
+
+for (const middleware of middlewares) {
+  app.use(middleware);
+}
 ////////////////////////////////
 
 /** Mengatur req body harus json */
@@ -41,10 +53,10 @@ app.use(express.static("public"));
 // eslint-disable-next-line no-undef
 setInterval(() => {
     setTerminalSource([]);
-    logger.log({
-        level: "info",
-        message: `terminalSourceValue ${getTerminalSource()}`,
-    })
+    // logger.log({
+    //     level: "info",
+    //     message: `terminalSourceValue ${getTerminalSource()}`,
+    // })
 }, 21600000);
 
 /** Database Connection */
@@ -55,10 +67,10 @@ connectMongo(databaseConfig)
     }))
     .catch((err) => { throw err; });
 
-logger.log({
-    level: "info",
-    message: `Nilai terminalSource ${getTerminalSource()}`,
-})
+// logger.log({
+//     level: "info",
+//     message: `Nilai terminalSource ${getTerminalSource()}`,
+// })
 
 /** Running Application */
 app.listen(
