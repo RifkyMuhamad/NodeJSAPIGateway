@@ -145,6 +145,7 @@ const englishVocabSchema = new Schema(
         vocab: String,
         pronounce: {
             ipa: String,
+            common: String
         },
         explanation: [ String ],
         level: String,

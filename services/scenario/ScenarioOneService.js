@@ -5,6 +5,7 @@ import { isHasPriorityLang, isChoiceLangIsPriority, filterPriorityLang } from ".
 // eslint-disable-next-line max-len
 import { getRandomIndexArray } from "../../helper/GetRandomIndexArray.js";
 import { languageDataService } from "../../JSON/LanguageData.js";
+import {isFunction} from "../../helper/IsFunction.js";
 
 /**
  *
@@ -116,13 +117,7 @@ import { languageDataService } from "../../JSON/LanguageData.js";
  * @param { String[] } filteredLanguages
  * @return { ( Number | String | String )[] | *[] }
  */
-function scenarioOneService (
-    obj,
-    filteredKeys,
-    vocabProperty,
-    vocabValue,
-    filteredLanguages
-) {
+function scenarioOneService (obj, filteredKeys, vocabProperty, vocabValue, filteredLanguages) {
 
     /**
      *
@@ -179,13 +174,7 @@ function iterateArray (language, obj, returnValue) {
     for (const choiceLanguage of language) {
         const languageData = languageDataService(choiceLanguage);
         if (!languageData) continue;
-        const choiceVocab =
-            obj[choiceLanguage]
-                .vocab[
-                    getRandomIndexArray(
-                        obj[choiceLanguage].vocab
-                    )
-                ];
+        const choiceVocab = obj[choiceLanguage].vocab[getRandomIndexArray(obj[choiceLanguage].vocab)];
         const vocabulary = choiceVocab[languageData.vocabulary];
         const latinValue = languageData.latin;
         const latin = latinValue
@@ -196,7 +185,6 @@ function iterateArray (language, obj, returnValue) {
         if (checkExcludedVocabOrLanguage(vocabulary)) continue;
         returnValue.push(choiceLanguage, vocabulary);
         if (latin !== undefined) returnValue.push(choiceLanguage, latin);
-
     }
 }
 

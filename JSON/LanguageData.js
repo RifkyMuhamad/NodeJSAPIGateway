@@ -32,7 +32,6 @@ function languageDataService (choiceLanguage) {
         },
         chinese: {
             vocabulary: "hanzi",
-            // latin: "latin"
             latin: (choiceLatin) => {
                 return choiceLatin.latin.length === 1
                     ? choiceLatin.latin[0]
@@ -56,14 +55,17 @@ function languageDataService (choiceLanguage) {
         english: {
             vocabulary: "vocab",
             latin: (choiceLatin) => {
-                // 3
-                return choiceLatin.ipa;
-
-                // 2
-                // return choiceLatin.APAAN
-
-                // 1
-                // return choiceLatin.APAAN
+                const { ipa, common } = choiceLatin.pronounce;
+                if (ipa !== undefined && common !== undefined) {
+                    const randomIndex = Math.random() < 0.5 ? 'ipa' : 'common';
+                    return choiceLatin.pronounce[randomIndex];
+                } else if (ipa !== undefined) {
+                    return ipa;
+                } else if (common !== undefined) {
+                    return common;
+                } else {
+                    return undefined;
+                }
             },
         },
         russian: {

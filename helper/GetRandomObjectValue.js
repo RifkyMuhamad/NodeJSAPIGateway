@@ -46,7 +46,7 @@ function getRandomObjectValue (obj, except, functionCall, ...scenario) {
     );
 
     /**
-     * vocabularyValue menampung nilai vocab dalam bahasa indonesia
+     * vocabularyValue menampung nilai vocabulary dalam bahasa indonesia
      *
      * @type { String || String[] }
      */

@@ -1,12 +1,13 @@
 import {
     setJustThisLang,
     setExceptVocab,
-    setExceptLang
+    setExceptLang,
+    getJustThisLang,
+    getExceptLang
 } from "../../config/AppConfig.js";
 import vocabService from "../../services/VocabService/VocabService.js";
-import {
-    setAppConfigFromQueryParam
-} from "../../helper/SetAppConfigFromQueryParam.js";
+import { setAppConfigFromQueryParam } from "../../helper/SetAppConfigFromQueryParam.js";
+import {cleanArrayJustThisLang} from "../../helper/CleanArrayJustThisLang.js";
 
 /**
  * Function get milik VocabController ini
@@ -31,24 +32,22 @@ async function get (req, res) {
     setAppConfigFromQueryParam(req.query.exceptVocab, "EV");
     setAppConfigFromQueryParam(req.query.exceptLang, "EL");
 
-    /**
-     * Variable result ini menampung array untuk response
-     * @type { (Number | String)[] }
-     */
-    const result = await vocabService.get();
+    cleanArrayJustThisLang(getJustThisLang(), getExceptLang());
 
-    if (result.length === 0) {
-        get(req, res);
-    } else {
-        res.json({
-            message: "Hai",
-            result: result,
-        });
+    let result = await vocabService.get();
 
-        setJustThisLang([]);
-        setExceptVocab([]);
-        setExceptLang([]);
+    while (result.length === 0) {
+        result = await vocabService.get();
     }
+
+    res.json({
+        message: "Hai",
+        result: result,
+    });
+
+    setJustThisLang([]);
+    setExceptVocab([]);
+    setExceptLang([]);
 }
 
 export default { get };
