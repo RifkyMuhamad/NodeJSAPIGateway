@@ -3,6 +3,10 @@ import {setCategories, setExceptLang, setExceptVocab, setJustThisLang} from "../
 const nilaiArray = ["english", "japanese", "korean", "arabic", "french", "chinese"]
 
 function setAppConfigFromQueryParam (value, arrayConfig) {
+    if (arrayConfig === "C"){
+        setCategories(["random vocabs"])
+    }
+
     if (typeof value !== "undefined" && value !== null) {
         if (value !== "") {
             const arrayResult = JSON.parse(value);
@@ -21,7 +25,6 @@ function setAppConfigFromQueryParam (value, arrayConfig) {
                     setExceptVocab(newArrayResult);
                     break;
                 case "C":
-                    newArrayResult = arrayResult.length === 0 ? ["random vocabs"] : arrayResult;
                     setCategories(newArrayResult);
                     break;
             }
