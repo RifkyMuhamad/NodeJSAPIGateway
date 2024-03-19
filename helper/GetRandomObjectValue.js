@@ -8,6 +8,26 @@ function getRandomObjectValue (obj, except, functionCall, ...scenario) {
         message: `getRandomObjectValue dipanggil`,
     })
 
+    logger.log({
+        level: "info",
+        message: `nilai dari obj ${obj}`,
+    })
+
+    logger.log({
+        level: "info",
+        message: `nilai dari except ${except}`,
+    })
+
+    logger.log({
+        level: "info",
+        message: `nilai dari functionCall ${functionCall}`,
+    })
+
+    logger.log({
+        level: "info",
+        message: `nilai dari scenario ${scenario}`,
+    })
+
     // jika object berisi properti kosong
     if (Object.keys(obj).length === 0) {
         logger.log({
