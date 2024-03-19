@@ -15,11 +15,6 @@ import {logger} from "../../log/log.js";
  */
 async function get () {
 
-    logger.log({
-        level: "info",
-        message: `VocabService.get dipanggil`,
-    })
-
     /**
      * terminalSource menampung nilai hasil dari queries database
      *
@@ -30,12 +25,21 @@ async function get () {
             ? await vocabRepository.get()
             : getTerminalSource();
 
-    const newTerminalSource =
-        getCategories()
-            .map(item =>
-                terminalSource.find(obj =>
-                    obj.hasOwnProperty(item)
-                )[item]);
+    const newTerminalSource = [];
+
+
+        // getCategories()
+        //     .map(item =>
+        //         terminalSource.find(obj =>
+        //             obj.hasOwnProperty(item)
+        //         )[item]);
+
+    getCategories().forEach(category => {
+        const foundCategory = terminalSource.find(obj => Object.keys(obj)[0] === category);
+        if (foundCategory) {
+            newTerminalSource.push(Object.values(foundCategory[category]));
+        }
+    });
 
     /**
      * terminalSource dikirimkan ke dalam
@@ -44,12 +48,18 @@ async function get () {
      *
      * @type {*[]}
      */
+
     const objectFromArray =
         getRandomArrayValue(
             newTerminalSource[
                 getRandomIndexArray(newTerminalSource)
                 ]
         )._doc;
+
+    logger.log({
+        level: "info",
+        message: `Nilai objectFromArray ${objectFromArray}`,
+    })
 
     if (objectFromArray === 505) {
         return 505;

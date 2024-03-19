@@ -29,11 +29,6 @@ import {logger} from "../../log/log.js";
  */
 async function get (req, res) {
 
-    logger.log({
-        level: "info",
-        message: `VocabController.get dipanggil`,
-    })
-
     setAppConfigFromQueryParam(req.query.justThisLang, "JTL");
     setAppConfigFromQueryParam(req.query.exceptVocab, "EV");
     setAppConfigFromQueryParam(req.query.exceptLang, "EL");

@@ -12,12 +12,6 @@ import {dataModels} from "../../JSON/DataModels.js";
  * @return { Promise<String[]> }
  */
 async function get () {
-
-    logger.log({
-        level: "info",
-        message: `VocabRepository.get dipanggil`,
-    })
-
     try {
         for (const { model, property } of dataModels) {
             const data = await model.find();
