@@ -9,27 +9,32 @@ function setAppConfigFromQueryParam (value, arrayConfig) {
 
     if (typeof value !== "undefined" && value !== null) {
         if (value !== "") {
-            const arrayResult = JSON.parse(value);
-            let newArrayResult;
+            const parsedValue = JSON.parse(value);
+            let arrayResult;
             switch (arrayConfig) {
                 case "JTL":
-                    newArrayResult = arrayResult.filter(nilai => nilaiArray.includes(nilai));
-                    setJustThisLang(newArrayResult);
+                    arrayResult = filterByArray(parsedValue, nilaiArray);
+                    setJustThisLang(arrayResult);
                     break;
                 case "EL":
-                    newArrayResult = arrayResult.filter(nilai => nilaiArray.includes(nilai));
-                    setExceptLang(newArrayResult);
+                    arrayResult = filterByArray(parsedValue, nilaiArray);
+                    setExceptLang(arrayResult);
                     break;
                 case "EV":
-                    newArrayResult = arrayResult.filter(nilai => nilaiArray.includes(nilai));
-                    setExceptVocab(newArrayResult);
+                    arrayResult = filterByArray(parsedValue, nilaiArray);
+                    setExceptVocab(arrayResult);
                     break;
                 case "C":
-                    setCategories(newArrayResult);
+                    arrayResult = parsedValue.length === 0 ? ["random vocabs"] : parsedValue;
+                    setCategories(arrayResult);
                     break;
             }
         }
     }
+}
+
+function filterByArray(array, filterArray) {
+    return array.filter(value => filterArray.includes(value));
 }
 
 export { setAppConfigFromQueryParam };
