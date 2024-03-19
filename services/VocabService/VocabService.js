@@ -4,7 +4,8 @@ import { getRandomIndexArray } from "../../helper/GetRandomIndexArray.js";
 import { getRandomObjectValue } from "../../helper/GetRandomObjectValue.js";
 import { scenarioOneService } from "../scenario/ScenarioOneService.js";
 import { getTerminalSource } from "../../config/TerminalSourceConfig.js";
-import {getCategories} from "../../config/AppConfig.js";
+import { getCategories } from "../../config/AppConfig.js";
+import {logger} from "../../log/log.js";
 
 /**
  * Function get milik VocabService ini berguna sebagai logika bisnis
@@ -13,6 +14,11 @@ import {getCategories} from "../../config/AppConfig.js";
  * @return { Promise<*|number> }
  */
 async function get () {
+
+    logger.log({
+        level: "info",
+        message: `VocabService.get dipanggil`,
+    })
 
     /**
      * terminalSource menampung nilai hasil dari queries database

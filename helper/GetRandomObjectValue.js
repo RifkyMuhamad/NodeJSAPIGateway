@@ -3,6 +3,11 @@ import { logger } from "../log/log.js";
 
 function getRandomObjectValue (obj, except, functionCall, ...scenario) {
 
+    logger.log({
+        level: "info",
+        message: `getRandomObjectValue dipanggil`,
+    })
+
     // jika object berisi properti kosong
     if (Object.keys(obj).length === 0) {
         logger.log({

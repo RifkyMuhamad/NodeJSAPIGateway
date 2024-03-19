@@ -8,6 +8,7 @@ import {
 import vocabService from "../../services/VocabService/VocabService.js";
 import { setAppConfigFromQueryParam } from "../../helper/SetAppConfigFromQueryParam.js";
 import {cleanArrayJustThisLang} from "../../helper/CleanArrayJustThisLang.js";
+import {logger} from "../../log/log.js";
 
 /**
  * Function get milik VocabController ini
@@ -27,6 +28,11 @@ import {cleanArrayJustThisLang} from "../../helper/CleanArrayJustThisLang.js";
  * @return { Promise<void> }
  */
 async function get (req, res) {
+
+    logger.log({
+        level: "info",
+        message: `VocabController.get dipanggil`,
+    })
 
     setAppConfigFromQueryParam(req.query.justThisLang, "JTL");
     setAppConfigFromQueryParam(req.query.exceptVocab, "EV");

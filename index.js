@@ -4,7 +4,7 @@ import router from "./routes/routes.js";
 import { logger } from "./log/log.js";
 import { connectMongo } from "./database/DBConnect.js";
 import { databaseConfig } from "./config/DatabaseConfig.js";
-import {getTerminalSource, setTerminalSource} from "./config/TerminalSourceConfig.js";
+import { getTerminalSource, setTerminalSource } from "./config/TerminalSourceConfig.js";
 
 /** Mengatur server akan mengakses variable environment*/
 dotenv.config();
