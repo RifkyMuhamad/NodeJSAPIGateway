@@ -25,6 +25,11 @@ async function get () {
             ? await vocabRepository.get()
             : getTerminalSource();
 
+    logger.log({
+        level: "info",
+        message: `Nilai terminalSource ${terminalSource}`,
+    })
+
     const newTerminalSource = [];
 
 
@@ -34,12 +39,27 @@ async function get () {
         //             obj.hasOwnProperty(item)
         //         )[item]);
 
+    logger.log({
+        level: "info",
+        message: `Nilai newTerminalSource ${newTerminalSource}`,
+    })
+
+    logger.log({
+        level: "info",
+        message: `Nilai getCategories ${getCategories()}`,
+    })
+
     getCategories().forEach(category => {
         const foundCategory = terminalSource.find(obj => Object.keys(obj)[0] === category);
         if (foundCategory) {
             newTerminalSource.push(Object.values(foundCategory[category]));
         }
     });
+
+    logger.log({
+        level: "info",
+        message: `Nilai newTerminalSource ${newTerminalSource}`,
+    })
 
     /**
      * terminalSource dikirimkan ke dalam
