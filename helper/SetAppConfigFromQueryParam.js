@@ -6,7 +6,6 @@ function setAppConfigFromQueryParam (value, arrayConfig) {
     if (arrayConfig === "C"){
         setCategories(["random vocabs"])
     }
-
     if (typeof value !== "undefined" && value !== null) {
         if (value !== "") {
             const parsedValue = JSON.parse(value);
@@ -21,8 +20,26 @@ function setAppConfigFromQueryParam (value, arrayConfig) {
                     setExceptLang(arrayResult);
                     break;
                 case "EV":
-                    arrayResult = filterByArray(parsedValue, nilaiArray);
-                    setExceptVocab(arrayResult);
+                    setExceptVocab(
+                        [...new Set(
+                            parsedValue
+                                .flatMap(item =>
+                                    item.split(',')
+                                        .filter(item =>
+                                            item !== '')
+                                        .map(word =>
+                                            word
+                                                .trim()
+                                                .replace(/-/g, ' ')
+                                                .replace(/[^a-zA-Z\s'-]/g, '')
+                                                .toLowerCase())
+                                        .sort(
+                                            (a, b) =>
+                                                a.localeCompare(b, 'id', { sensitivity: 'base' })
+                                        )
+                                )
+                        )]
+                    );
                     break;
                 case "C":
                     arrayResult = parsedValue.length === 0 ? ["random vocabs"] : parsedValue;

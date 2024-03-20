@@ -3,12 +3,11 @@ import {
     setExceptVocab,
     setExceptLang,
     getJustThisLang,
-    getExceptLang, getCategories
+    getExceptLang, getCategories, getExceptVocab
 } from "../../config/AppConfig.js";
 import vocabService from "../../services/VocabService/VocabService.js";
 import { setAppConfigFromQueryParam } from "../../helper/SetAppConfigFromQueryParam.js";
 import {cleanArrayJustThisLang} from "../../helper/CleanArrayJustThisLang.js";
-import {logger} from "../../log/log.js";
 
 /**
  * Function get milik VocabController ini
@@ -36,15 +35,40 @@ async function get (req, res) {
 
     cleanArrayJustThisLang(getJustThisLang(), getExceptLang());
 
-    let result = await vocabService.get();
+    console.log(getExceptVocab())
 
-    while (result.length === 0) {
+    let result = await vocabService.get();
+    let newResult = result.map(item => {
+        if (typeof item === "string") {
+            return item.toLowerCase().replace(/-/g, ' ')
+        } else {
+            return item
+        }
+    });
+
+    for (
+        let i = 0;
+        i < 11 &&
+            (newResult.length === 0
+                || newResult.length === 3
+                || newResult.some(value =>
+                    getExceptVocab().includes(value)
+                )
+            )
+        ; i++) {
         result = await vocabService.get();
+        newResult = result.map(item => {
+            if (typeof item === "string") {
+                return item.toLowerCase().replace(/-/g, ' ')
+            } else {
+                return item
+            }
+        });
     }
 
     res.json({
         message: "Hai",
-        result: result,
+        result: newResult,
     });
 
     setJustThisLang([]);

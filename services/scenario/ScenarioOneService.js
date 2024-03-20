@@ -148,7 +148,10 @@ function scenarioOneService (obj, filteredKeys, vocabProperty, vocabValue, filte
      */
     const shuffledLanguages = shuffleArray(newFilteredLanguages);
 
+    // apakah terdapat bahasa yang diprioritaskan
     if (isHasPriorityLang()) {
+
+        // apakah bahasa yang dimiliki terdapat bahasa prioritas
         if (isChoiceLangIsPriority(shuffledLanguages)) {
             const priorityLang = filterPriorityLang(shuffledLanguages);
             iterateArray(priorityLang, obj, returnValue);
@@ -182,6 +185,8 @@ function iterateArray (language, obj, returnValue) {
                 ? latinValue(choiceVocab)
                 : choiceVocab[latinValue] )
             : undefined;
+
+        // apakah terdapat kosakata yang dikecualikan?
         if (checkExcludedVocabOrLanguage(vocabulary)) continue;
         returnValue.push(choiceLanguage, vocabulary);
         if (latin !== undefined) returnValue.push(choiceLanguage, latin);
