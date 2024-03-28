@@ -1,7 +1,7 @@
 // eslint-disable-next-line require-await
 async function get (req, res) {
     res.json({
-        logo: "DyoneStrankers",
+        logo: "Dyone Strankers",
         navItems: [
             { link: "Home", path: "/" },
             { link: "Article", path: "article" },
